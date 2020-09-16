@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-//import TrelloClient, { Trello } from 'react-trello-client';
 import Board from 'react-trello';
 
 const data = {

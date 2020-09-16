@@ -1,6 +1,7 @@
 .App {
     margin-left: 20px;
     margin-right: 20px;
+    
 }
 
 .Home {
@@ -9,12 +10,40 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 28px;
-    font-size: 30px;
 }
 
 .Login {
     margin-top: 30px;
     margin-left: 40px;
+}
+
+.login-form {
+    box-sizing: border-box;
+    border: 2px solid #eee;
+    width: 230px;
+    margin-top: 15px;
+    padding-bottom: 10px;
+}
+
+.login-form:hover {
+    border: 2px solid #aaa;
+}
+
+.main-input {
+    margin: 10px 0;
+    margin-left: 20px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.main-input:hover {
+    border: 2px solid #aaa;
+}
+
+.login-button {
+    margin-left: 20px;
 }

@@ -7,7 +7,6 @@ export default class Home extends Component {
         return (
                 <div className="Home">
                     <div>Welcome to my app!</div>
-                
                 </div>
         );
     }
