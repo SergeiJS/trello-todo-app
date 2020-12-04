@@ -18,22 +18,29 @@ class Login extends Component {
       this.state = {
         login: '',
         pass: '',
+        rememberMe: false,
       };
   }
 
   hadleChange(event) {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
+        const input = event.target;
+        /*const name = target.name;*/
+        const value = /*target.value;*/input.type === 'checkbox' ? input.checked : input.value;
 
-        this.setState({[name]: value});
+        this.setState({[input.name]: value});
     }
   
   handleClick(e) {
+      const { login, pass, rememberMe } = this.state;
+      localStorage.setItem('rememberMe', rememberMe);
+      localStorage.setItem('login', rememberMe ? login : '');
+      localStorage.setItem('pass', rememberMe ? pass : '');
+
       const { history } = this.props;
       e.preventDefault();
       
-      if (this.state.login === 'admin' && this.state.pass === '123') {
+      if ((this.state.login === 'admin' && this.state.pass === '123') || 
+          (this.state.login === 'user' && this.state.pass === '111')) {
         history.push('/trello')
       } else if (this.state.login === '' && this.state.pass === '') {
         alert('Please, enter your login and password')
@@ -48,6 +55,14 @@ class Login extends Component {
         
       
   }
+
+  componentDidMount() {
+    const rememberMe = localStorage.getItem('rememberMe') === 'true';
+    const login = rememberMe ? localStorage.getItem('login') : '';
+    const pass = rememberMe ? localStorage.getItem('pass') : '';
+    this.setState({ login, pass, rememberMe });
+  }
+
     render() {
         
         return (
@@ -70,6 +85,15 @@ class Login extends Component {
                         onChange={this.hadleChange} 
                         type='password'>
                     </input>
+                </div>
+                <div>
+                    <input 
+                        name='rememberMe' 
+                        className='remember-input' 
+                        checked={this.state.rememberMe} 
+                        onChange={this.hadleChange} 
+                        type='checkbox'>
+                    </input> Remember me
                 </div>
                 <div  onClick={this.handleClick}>
                     <LoginButton />
